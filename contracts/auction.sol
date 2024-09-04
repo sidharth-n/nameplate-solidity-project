@@ -29,14 +29,14 @@ function updateOwner () public payable {
 PreviousOwner memory newPreviousOwner = PreviousOwner({
     ownerAddress : currentOwner,
     ownerPrice : currentPrice
-})
+});
 
 previousOwners.push(newPreviousOwner);
 
     address previousOwner = currentOwner;
     currentOwner = msg.sender;
     currentPrice = msg.value;
-    emit ownershipTransferred(previousOwner, currentOwner,currentPrice)
+    emit ownershipTransferred(previousOwner, currentOwner,currentPrice);
 
 }
 

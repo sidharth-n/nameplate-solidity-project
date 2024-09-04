@@ -4,26 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
-      <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
-    <title>Name Plate</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <title>NFT Showcase</title>
   </head>
   <body>
     <div id="container">
-        <div class="canvas-container"> 
+      <div class="nft-showcase">
         <canvas id="canvas"></canvas>
-        <button type="button" class="button" id="buy-button">BUY NOW</button>
-          <button type="button" class="button" id="metamask-connect-button">Connect to MetaMask</button>
+        <div class="button-container">
+          <input
+            type="number"
+            id="buy-price"
+            placeholder="Enter price in ETH"
+            step="0.001"
+            min="0"
+          />
+          <button type="button" class="button" id="buy-button">Buy NFT</button>
+          <button type="button" class="button" id="metamask-connect-button">
+            Connect MetaMask
+          </button>
         </div>
-      <div class ="content-container">
-        <div class="last-buyer-container">
-            <div class="current-buyer-heading">Present Owner</div>
-            <img class="current-buyer-image" src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg">
-            <div class="current-buyer-name">Sid</div>
-             <div class="current-bid-amount">Current Bid: $20</div>
-            
+      </div>
+      <div class="info-container">
+        <div class="current-owner">
+          <h2>Current Owner</h2>
+          <img
+            class="owner-image"
+            src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+            alt="Current Owner"
+          />
+          <p class="owner-name">Sid</p>
+          <p class="current-price">Current Price: 20 ETH</p>
+        </div>
+        <div class="previous-owners">
+          <h2>Previous Owners</h2>
+          <ul id="previous-owners-list"></ul>
+        </div>
+      </div>
     </div>
-<!-- <div class="previous-buyers-container"></div> -->
-</div>
     <script type="module" src="./script.js"></script>
   </body>
 </html>
