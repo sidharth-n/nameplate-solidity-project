@@ -274,6 +274,19 @@ async function updateUIAfterConnection() {
       ".current-price"
     ).textContent = `Current Price: ${currentPriceEth} ETH`
 
+    // Calculate and display minimum price
+    const minIncrement = await contract.methods
+      .MIN_INCREMENT_PERCENTAGE()
+      .call()
+    const minPrice = web3.utils
+      .toBN(currentPrice)
+      .mul(web3.utils.toBN(100 + parseInt(minIncrement)))
+      .div(web3.utils.toBN(100))
+    const minPriceEth = web3.utils.fromWei(minPrice, "ether")
+    document.getElementById(
+      "min-price-value"
+    ).textContent = `${minPriceEth} ETH`
+
     // Fetch and update previous owners list
     await updatePreviousOwnersList()
   } catch (error) {
@@ -318,6 +331,8 @@ buyButton.addEventListener("click", async () => {
     alert(
       "Congrats! you have written succesfuly to the blockchain. check transaction history"
     )
+    await updateUIAfterConnection()
+    await updatePreviousOwnersList()
   } catch (e) {
     console.error("Error:", e)
     alert("An error occurred. Please check the console for details.")
